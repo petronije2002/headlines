@@ -18,9 +18,9 @@ rss_feed = {'info': 'http://www.b92.net/info/rss/vesti.xml',
             'travel': 'http://www.b92.net/info/rss/putovanja.xml '}
 
 
-@app.route('/')
+@app.route('/',methods=['GET','POST'])
 def get_news():
-    query = request.args.get("publication")
+    query = request.form.get("publication")
     if not query or query.lower() not in rss_feed:
         publication = 'info'
     else:
